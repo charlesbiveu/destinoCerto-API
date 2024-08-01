@@ -19,6 +19,18 @@ O roteiro da aplicação pode ser conferido no Trello
 
 - [Trello](https://trello.com/b/goHFnQ89/destino-certo-api)
 
+
+## Diagrama ERD (Entity-Relationship Diagram)
+
+O Diagrama Entidade-Relacionamento pode ser visualizado do DrawSql.
+
+- Um User pode ter muitos CollectionPoints.
+- Um CollectionPoint pode ter muitos RecycleTypes associados através da tabela de relacionamento CollectionPointRecycleType.
+
+`User (1) --- (N) CollectionPoint (N) --- (N) CollectionPointRecycleType --- (N) RecycleType`
+
+- [DrawSql](https://drawsql.app/teams/gp-13/diagrams/destino-certo)
+
 ## Instalação
 
 - Para usar o **Destino Certo - API**, clone ou faça download do repositório:
@@ -107,8 +119,9 @@ npm run start:prod
 - Incluir um arquivo de exemplo listando as variáveis utilizadas no sistema ou na documentação.
 
 
- ## Tecnologias e Suporte Utilizadas
+ ## Tecnologias e Dependências Utilizadas
 [![Node](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![postgresSql](https://img.shields.io/badge/pg-336760?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![nodemon](https://img.shields.io/badge/nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white)](https://nodemon.io/)
 [![axios](https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
 [![bcryptjs](https://img.shields.io/badge/bcryptjs-4B4B4B?style=for-the-badge&logo=javascript&logoColor=white)](https://github.com/dcodeIO/bcrypt.js)
@@ -116,7 +129,7 @@ npm run start:prod
 [![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black)](https://github.com/motdotla/dotenv)
 [![express](https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 [![jsonwebtoken](https://img.shields.io/badge/jsonwebtoken-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)](https://jwt.io/)
-[![pg](https://img.shields.io/badge/pg-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![pg](https://img.shields.io/badge/pg-336791?style=for-the-badge&logo=nodepgsql&logoColor=white)](https://node-postgres.com/)
 [![sequelize](https://img.shields.io/badge/sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)](https://sequelize.org/)
 [![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/)
 [![Trello](https://img.shields.io/badge/Trello-5E4955?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/goHFnQ89/destino-certo-api)
@@ -237,5 +250,7 @@ Sites
 
 - Gerar pessoas: [4Devs](https://www.4devs.com.br/gerador_de_pessoas)
 - Roteiro da aplicação: [ Trello ](https://trello.com/)
+- Gerar Diagramas ER: [DrawSql](https://drawsql.io)
 - Destino Certo FrontEnd: [DestinoCerto](https://github.com/charlesbiveu/destinoCerto)
+
 
