@@ -100,6 +100,15 @@ const validateAddress = (postalcode, street, neighborhood, city, state, number) 
   }
   return null;
 };
+
+const validateDescription = (description) => {
+  if (description && description.trim() === '') {
+    return { status: 400, message: 'Descrição não pode ser vazia // Description cannot be empty' };
+  }
+  return null;
+};
+
+
 module.exports = {
   validateCPF,
   validateName,
@@ -107,5 +116,6 @@ module.exports = {
   validateEmail,
   validatePassword,
   validateBirthdate,
-  validateAddress
+  validateAddress,
+  validateDescription
 };

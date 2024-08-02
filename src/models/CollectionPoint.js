@@ -2,15 +2,13 @@ const { DataTypes } = require('sequelize');
 const connection = require('../database/connection');
 const User = require('./User'); // Adicione a associação com o model User
 
-const formatPostalCode = (postalcode) => postalcode.replace(/[^\d]+/g, '');
-
 const CollectionPoint = connection.define('collection_points', {
   name: {
     type: DataTypes.STRING(180),
     allowNull: false
   },
   description: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: true
   },
   postalcode: {
@@ -18,7 +16,7 @@ const CollectionPoint = connection.define('collection_points', {
     allowNull: false,
     validate: {
       isNumeric: true,
-      len: [8, 8] // Validação para exatamente 8 caracteres
+      len: [8, 8]
     }
   },
   street: {
@@ -78,14 +76,6 @@ const CollectionPoint = connection.define('collection_points', {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW
-  }
-}, {
-  hooks: {
-    beforeSave: (collectionPoint) => {
-      if (collectionPoint.postalcode) {
-        collectionPoint.postalcode = formatPostalCode(collectionPoint.postalcode);
-      }
-    }
   }
 });
 

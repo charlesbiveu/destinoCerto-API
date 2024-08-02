@@ -78,11 +78,6 @@
         "description": "Endpoint para criar um usuário. Senha deve conter no minimo 8 caracteres, maiuscula, minuscula e caractere especial. O cpf deve ser válido",
         "parameters": [
           {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "criarUsuario",
             "in": "body",
             "description": "Dados do usuário",
@@ -157,9 +152,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
           "409": {
             "description": "Conflict"
           }
@@ -197,7 +189,7 @@
         "tags": [
           "Pontos de Coleta"
         ],
-        "description": "Endpoint para criar ponto de coleta",
+        "description": "Endpoint para criar um ponto de coleta",
         "parameters": [
           {
             "name": "authorization",
@@ -207,46 +199,30 @@
           {
             "name": "criarPontoDeColeta",
             "in": "body",
-            "description": "Dados do ponto de coleta",
+            "description": "Dados do ponto de coleta. Importante para teste recycle_type deve ser um array com valores de 1 a 20",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Nelson Marcos Vinicius Oliveira"
+                  "example": "Ponto Dakir Polidoro"
                 },
-                "cpf": {
+                "description": {
                   "type": "string",
-                  "example": "862.885.759-17"
-                },
-                "gender": {
-                  "type": "string",
-                  "example": "M"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "nelsonmarcosoliveira@kimmay.com.br"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "Teste123!"
-                },
-                "birthdate": {
-                  "type": "string",
-                  "example": "1975-08-02"
+                  "example": "Este é um ponto de coleta da comcap para recolhimento de vidros"
                 },
                 "postalcode": {
                   "type": "string",
-                  "example": "88067-108"
+                  "example": "88063-365"
                 },
                 "street": {
                   "type": "string",
-                  "example": "Servidão Manoel Barbosa"
+                  "example": "Rua Radialista Dakir Polidoro"
                 },
                 "neighborhood": {
                   "type": "string",
-                  "example": "Pântano do Sul"
+                  "example": "Campeche"
                 },
                 "city": {
                   "type": "string",
@@ -258,16 +234,23 @@
                 },
                 "number": {
                   "type": "string",
-                  "example": "634"
+                  "example": "123"
+                },
+                "recycle_types": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
                 }
               },
               "required": [
                 "name",
-                "cpf",
-                "gender",
-                "email",
-                "password",
-                "birthdate",
+                "description",
                 "postalcode",
                 "street",
                 "neighborhood",
@@ -279,9 +262,6 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
           "400": {
             "description": "Bad Request"
           },
