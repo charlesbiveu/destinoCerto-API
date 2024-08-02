@@ -116,6 +116,22 @@
           }
         }
       }
+    },
+    "/tipos-reciclagem/listar": {
+      "get": {
+        "tags": [
+          "Tipos de Reciclagem"
+        ],
+        "description": "Endpoint para listar todos os tipos de materiais reciclagem que serão veiculados aos pontos de coleta",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "security": [
