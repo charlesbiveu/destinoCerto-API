@@ -3,6 +3,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./doc.swagger.json');
 const usersRoutes = require('./users.routes');
 const recycleTypesRoutes = require('./recycleTypes.routes');
+const collectionPointsRoutes = require('./collectionPoints.routes');
 
 const routes = Router();
 
@@ -15,6 +16,6 @@ routes.get('/', (req, res) => {
 
 routes.use('/usuarios', usersRoutes);
 routes.use('/tipos-reciclagem', recycleTypesRoutes);
-
+routes.use('/pontos-coleta', collectionPointsRoutes);
 
 module.exports = routes;

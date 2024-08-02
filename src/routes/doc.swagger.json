@@ -132,6 +132,22 @@
           }
         }
       }
+    },
+    "/pontos-coleta/criar": {
+      "post": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para criar um ponto de coleta",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "security": [
