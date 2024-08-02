@@ -34,7 +34,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Endpoint para criar um usuário",
+        "description": "Endpoint para criar um usuário. Senha deve conter no minimo 8 caracteres, maiuscula, minuscula e caractere especial. O cpf deve ser válido",
         "parameters": [
           {
             "name": "criarUsuario",
@@ -46,11 +46,11 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Usuario Teste"
+                  "example": "Nelson Marcos Vinicius Oliveira"
                 },
                 "cpf": {
                   "type": "string",
-                  "example": "12345678901"
+                  "example": "862.885.759-17"
                 },
                 "gender": {
                   "type": "string",
@@ -58,7 +58,7 @@
                 },
                 "email": {
                   "type": "string",
-                  "example": "teste@gmail.com"
+                  "example": "nelsonmarcosoliveira@kimmay.com.br"
                 },
                 "password": {
                   "type": "string",
@@ -66,31 +66,31 @@
                 },
                 "birthdate": {
                   "type": "string",
-                  "example": "2000-01-01"
+                  "example": "1975-08-02"
                 },
                 "postalcode": {
                   "type": "string",
-                  "example": "12345678"
+                  "example": "88067-108"
                 },
                 "street": {
                   "type": "string",
-                  "example": "Rua Exemplo"
+                  "example": "Servidão Manoel Barbosa"
                 },
                 "neighborhood": {
                   "type": "string",
-                  "example": "Bairro Exemplo"
+                  "example": "Pântano do Sul"
                 },
                 "city": {
                   "type": "string",
-                  "example": "Cidade Exemplo"
+                  "example": "Florianópolis"
                 },
                 "state": {
                   "type": "string",
-                  "example": "EX"
+                  "example": "SC"
                 },
                 "number": {
                   "type": "string",
-                  "example": "123"
+                  "example": "634"
                 }
               },
               "required": [

@@ -32,6 +32,7 @@ function validateUserData(data) {
   validationError = validateBirthdate(data.birthdate);
   if (validationError) return validationError;
 
+  data.postalcode = data.postalcode.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos do CEP
   validationError = validateAddress(data.postalcode, data.street, data.neighborhood, data.city, data.state, data.number);
   if (validationError) return validationError;
 

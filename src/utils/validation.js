@@ -79,6 +79,7 @@ const validateBirthdate = (birthdate) => {
 };
 
 const validateAddress = (postalcode, street, neighborhood, city, state, number) => {
+  postalcode = postalcode.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos do CEP
   if (!postalcode || !/^\d{8}$/.test(postalcode)) {
     return { status: 400, message: 'CEP inválido // Invalid postal code' };
   }
@@ -99,7 +100,6 @@ const validateAddress = (postalcode, street, neighborhood, city, state, number) 
   }
   return null;
 };
-
 module.exports = {
   validateCPF,
   validateName,
