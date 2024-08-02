@@ -29,6 +29,47 @@
         }
       }
     },
+    "/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Endpoint para logar um usuário e criar um token para acesso",
+        "parameters": [
+          {
+            "name": "loginUsuario",
+            "in": "body",
+            "description": "Login do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "nelsonmarcosoliveira@kimmay.com.br"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Teste123!"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/usuarios/criar": {
       "post": {
         "tags": [
@@ -36,6 +77,11 @@
         ],
         "description": "Endpoint para criar um usuário. Senha deve conter no minimo 8 caracteres, maiuscula, minuscula e caractere especial. O cpf deve ser válido",
         "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
           {
             "name": "criarUsuario",
             "in": "body",
@@ -111,6 +157,9 @@
           }
         ],
         "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
           "409": {
             "description": "Conflict"
           }
@@ -123,9 +172,19 @@
           "Tipos de Reciclagem"
         ],
         "description": "Endpoint para listar todos os tipos de materiais reciclagem que serão veiculados aos pontos de coleta",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -138,10 +197,93 @@
         "tags": [
           "Pontos de Coleta"
         ],
-        "description": "Endpoint para criar um ponto de coleta",
+        "description": "Endpoint para criar ponto de coleta",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "criarPontoDeColeta",
+            "in": "body",
+            "description": "Dados do ponto de coleta",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Nelson Marcos Vinicius Oliveira"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "862.885.759-17"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "M"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "nelsonmarcosoliveira@kimmay.com.br"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Teste123!"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "1975-08-02"
+                },
+                "postalcode": {
+                  "type": "string",
+                  "example": "88067-108"
+                },
+                "street": {
+                  "type": "string",
+                  "example": "Servidão Manoel Barbosa"
+                },
+                "neighborhood": {
+                  "type": "string",
+                  "example": "Pântano do Sul"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Florianópolis"
+                },
+                "state": {
+                  "type": "string",
+                  "example": "SC"
+                },
+                "number": {
+                  "type": "string",
+                  "example": "634"
+                }
+              },
+              "required": [
+                "name",
+                "cpf",
+                "gender",
+                "email",
+                "password",
+                "birthdate",
+                "postalcode",
+                "street",
+                "neighborhood",
+                "city",
+                "state",
+                "number"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"

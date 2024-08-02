@@ -1,6 +1,6 @@
 const CollectionPoint = require('../models/CollectionPoint');
 
-const create = async (req, res) => {
+const createCollectionPoint = async (req, res) => {
   try {
     const collectionPoint = await CollectionPoint.create(req.body);
     return res.status(201).json(collectionPoint);
@@ -12,6 +12,6 @@ const create = async (req, res) => {
 
 
 module.exports = {
-  create,
+  createCollectionPoint,
 
 };
