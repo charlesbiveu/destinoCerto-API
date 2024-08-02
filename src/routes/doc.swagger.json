@@ -28,6 +28,94 @@
           }
         }
       }
+    },
+    "/usuarios/criar": {
+      "post": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para criar um usuário",
+        "parameters": [
+          {
+            "name": "criarUsuario",
+            "in": "body",
+            "description": "Dados do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Usuario Teste"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "12345678901"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "M"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "teste@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Teste123!"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "2000-01-01"
+                },
+                "postalcode": {
+                  "type": "string",
+                  "example": "12345678"
+                },
+                "street": {
+                  "type": "string",
+                  "example": "Rua Exemplo"
+                },
+                "neighborhood": {
+                  "type": "string",
+                  "example": "Bairro Exemplo"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Cidade Exemplo"
+                },
+                "state": {
+                  "type": "string",
+                  "example": "EX"
+                },
+                "number": {
+                  "type": "string",
+                  "example": "123"
+                }
+              },
+              "required": [
+                "name",
+                "cpf",
+                "gender",
+                "email",
+                "password",
+                "birthdate",
+                "postalcode",
+                "street",
+                "neighborhood",
+                "city",
+                "state",
+                "number"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
     }
   },
   "security": [
