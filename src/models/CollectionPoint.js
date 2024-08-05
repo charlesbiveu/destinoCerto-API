@@ -10,6 +10,10 @@ const CollectionPoint = connection.define('collection_points', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  recycle_types: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   postalcode: {
     type: DataTypes.STRING(8),
     allowNull: false,

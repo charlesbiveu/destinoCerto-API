@@ -16,16 +16,16 @@ collectionPointsRoutes.post(
         description: 'Dados do ponto de coleta',
         required: true,
         schema: {
-            $name: "Ponto Dakir Polidoro",
-            $description: "Este é um ponto de coleta da comcap para recolhimento de vidros",
-            $recycle_types: "Vidro, Papel, Plástico",
-            $postalcode: "88063-565",
-            $street: "Rua Radialista Dakir Polidoro",
-            $neighborhood: "Campeche",
-            $city: "Florianópolis",
-            $state: "SC",
-            $number: "123"
-        }
+              $name: "Ponto Dakir Polidoro",
+              $description: "Este é um ponto de coleta da comcap para recolhimento de vidros",
+              $recycle_types: "Vidro, Papel, Plástico",
+              $postalcode: "88063-565",
+              $street: "Rua Radialista Dakir Polidoro",
+              $neighborhood: "Campeche",
+              $city: "Florianópolis",
+              $state: "SC",
+              $number: "123"
+          }
     }
     #swagger.responses[201] = {
       description: 'Ponto de coleta criado com sucesso.'

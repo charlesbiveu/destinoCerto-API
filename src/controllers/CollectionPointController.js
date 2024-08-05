@@ -1,5 +1,10 @@
 const CollectionPoint = require('../models/CollectionPoint');
-const { validateAddress } = require('../utils/validation');
+const {
+  validateAddress,
+  validateRecycleTypes,
+  validateName,
+  validateDescription,
+} = require('../utils/validation');
 const { getMapLocal, getGoogleMapsLink } = require('../services/mapService');
 
 const createCollectionPoint = async (req, res) => {
@@ -16,7 +21,7 @@ const createCollectionPoint = async (req, res) => {
       number,
     } = req.body;
 
-    // Validar endereço
+    // Validate address
     const validationError = validateAddress(
       postalcode,
       street,
@@ -25,22 +30,49 @@ const createCollectionPoint = async (req, res) => {
       state,
       number
     );
-
     if (validationError)
       return res
         .status(validationError.status)
         .json({ error: validationError.message });
 
-    // Obter ID do usuário a partir do token
+    // Validate name
+    const nameError = validateName(name);
+    if (nameError)
+      return res.status(nameError.status).json({ error: nameError.message });
+
+    // Validate description
+    const descriptionError = validateDescription(description);
+    if (descriptionError)
+      return res
+        .status(descriptionError.status)
+        .json({ error: descriptionError.message });
+
+    // Validate recycle types
+    const recycleTypesError = validateRecycleTypes(recycle_types);
+    if (recycleTypesError)
+      return res
+        .status(recycleTypesError.status)
+        .json({ error: recycleTypesError.message });
+
+    // Get user ID from token
     const userId = req.userId;
 
-    // Buscar dados de localização
+    // Fetch location data
     const locationData = await getMapLocal(postalcode);
-    let latitude = locationData.lat;
-    let longitude = locationData.lon;
-    let map_link = await getGoogleMapsLink(locationData);
+    let latitude = null;
+    let longitude = null;
+    let map_link = null;
+    if (locationData) {
+      latitude = locationData.lat;
+      longitude = locationData.lon;
+      map_link = await getGoogleMapsLink(locationData);
+    } else {
+      console.error(
+        'Não foi possível obter a localização do mapa: Erro ao chamar a API de mapas. Valores de Latitude, Longitude e Link para o mapa serão null // Impossible to get location data. Latitude, Longitude and Map Link are null'
+      );
+    }
 
-    // Criar ponto de coleta
+    // Create collection point
     const collectionPoint = await CollectionPoint.create({
       name,
       description,
@@ -59,13 +91,12 @@ const createCollectionPoint = async (req, res) => {
 
     return res.status(201).json(collectionPoint);
   } catch (error) {
-    console.error('Erro interno do servidor:', error.message);
+    console.error('Internal Server Error:', error.message); // Log the error message
     return res
       .status(500)
       .json({ error: 'Erro interno do servidor // Internal Server Error' });
   }
 };
-
 const listUserCollectionPoints = async (req, res) => {
   try {
     const userId = req.userId;
@@ -168,6 +199,22 @@ const updateCollectionPoint = async (req, res) => {
       return res
         .status(validationError.status)
         .json({ error: validationError.message });
+
+    const nameError = validateName(name);
+    if (nameError)
+      return res.status(nameError.status).json({ error: nameError.message });
+
+    const descriptionError = validateDescription(description);
+    if (descriptionError)
+      return res
+        .status(descriptionError.status)
+        .json({ error: descriptionError.message });
+
+    const recycleTypesError = validateRecycleTypes(recycle_types);
+    if (recycleTypesError)
+      return res
+        .status(recycleTypesError.status)
+        .json({ error: recycleTypesError.message });
 
     const collectionPoint = await CollectionPoint.findOne({
       where: {
