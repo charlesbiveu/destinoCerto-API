@@ -20,6 +20,9 @@ O roteiro da aplicação pode ser conferido no Trello
 
 ## Diagrama ERD (Entity-Relationship Diagram)
 
+![drawSql](https://github.com/user-attachments/assets/02229ca9-37bd-40aa-9c75-66d5d95987f4)
+
+
 O Diagrama Entidade-Relacionamento pode ser visualizado do DrawSql.
 
 - Um User pode ter muitos CollectionPoints.
@@ -235,48 +238,13 @@ O projeto **Destino Certo - API** adota uma arquitetura inspirada no modelo MVC,
 
 ### Estrutura do projeto
 
-destinoCerto-API/
-├── node_modules/
-├── src/
-│ ├── config/
-│ │ └── database.config.js
-│ ├── controllers/
-│ │ ├── CollectionPointController.js
-│ │ ├── LoginController.js
-│ │ └── UserController.js
-│ ├── database/
-│ │ ├── migrations/
-│ │ │ ├── 20240801230059-create_table_users.js
-│ │ │ └── 20240802064301-create-collection-points.js
-│ │ ├── seeders/
-│ │ │ └── 20240802054000-seed-users.js
-│ │ └── connection.js
-│ ├── middlewares/
-│ │ └── validateToken.js
-│ ├── models/
-│ │ ├── CollectionPoint.js
-│ │ └── User.js
-│ ├── routes/
-│ │ ├── collectionPoints.routes.js
-│ │ ├── doc.swagger.json
-│ │ ├── routes.js
-│ │ └── users.routes.js
-│ ├── services/
-│ │ └── mapService.js
-│ ├── utils/
-│ │ └── validation.js
-│ └── index.js
-│ └── server.js
-├── .env
-├── .env.example
-├── .gitignore
-├── .sequelizerc
-├── autoGen.swagger.js
-├── package-lock.json
-├── package.json
-└── README.md
+![estruturaDoProjeto](https://github.com/user-attachments/assets/18577b35-d609-4489-ab2f-ff8672a1546f)
+
+
 
 ## Documentação com Swagger
+
+https://github.com/user-attachments/assets/e22eb0db-b928-45c5-8bc2-5986c89d016f
 
 ### Visão Geral
 
