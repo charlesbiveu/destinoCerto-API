@@ -3,7 +3,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./doc.swagger.json');
 const LoginController = require('../controllers/LoginController')
 const usersRoutes = require('./users.routes');
-const recycleTypesRoutes = require('./recycleTypes.routes');
 const collectionPointsRoutes = require('./collectionPoints.routes');
 
 
@@ -35,7 +34,6 @@ routes.post('/login', LoginController.login /*
 
 
 routes.use('/usuarios',  usersRoutes);
-routes.use('/tipos-reciclagem', validateToken, recycleTypesRoutes);
-routes.use('/pontos-coleta', validateToken,  collectionPointsRoutes);
+routes.use('/local', validateToken,  collectionPointsRoutes);
 
 module.exports = routes;

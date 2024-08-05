@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true
       },
+      recycle_types: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
       postalcode: {
         type: Sequelize.STRING(8),
         allowNull: false

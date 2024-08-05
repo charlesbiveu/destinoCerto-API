@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const connection = require('../database/connection');
-const User = require('./User'); // Adicione a associação com o model User
+const User = require('./User');
 
 const CollectionPoint = connection.define('collection_points', {
   name: {
@@ -10,6 +10,10 @@ const CollectionPoint = connection.define('collection_points', {
   description: {
     type: DataTypes.STRING,
     allowNull: true
+  },
+  recycle_types: {
+    type: DataTypes.TEXT,
+    allowNull: false
   },
   postalcode: {
     type: DataTypes.STRING(8),
@@ -69,17 +73,14 @@ const CollectionPoint = connection.define('collection_points', {
   },
   createdAt: {
     type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW
+    allowNull: false
   },
   updatedAt: {
     type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW
+    allowNull: false
   }
 });
 
-// Associação com User
 CollectionPoint.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = CollectionPoint;

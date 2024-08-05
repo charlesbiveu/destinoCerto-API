@@ -1,7 +1,7 @@
 {
   "name": "destinocerto-backend",
   "version": "1.0.0",
-  "description": "<p align=\"center\">   <img src=\"https://github.com/charles-futDevFloripa/destinoCerto/blob/develop/public/destinoCerto.png\" alt=\"Logo do Destino Certo\"> </p>",
+  "description": "Projeto final do módulo 2 - REST API",
   "main": "index.js",
   "scripts": {
     "start:prod": "node src/index.js",

@@ -158,33 +158,7 @@
         }
       }
     },
-    "/tipos-reciclagem/listar": {
-      "get": {
-        "tags": [
-          "Tipos de Reciclagem"
-        ],
-        "description": "Endpoint para listar todos os tipos de materiais reciclagem que serão veiculados aos pontos de coleta",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/pontos-coleta/criar": {
+    "/local/": {
       "post": {
         "tags": [
           "Pontos de Coleta"
@@ -212,9 +186,13 @@
                   "type": "string",
                   "example": "Este é um ponto de coleta da comcap para recolhimento de vidros"
                 },
+                "recycle_types": {
+                  "type": "string",
+                  "example": "Vidro, Papel, Plástico"
+                },
                 "postalcode": {
                   "type": "string",
-                  "example": "88063-365"
+                  "example": "88063-565"
                 },
                 "street": {
                   "type": "string",
@@ -235,22 +213,12 @@
                 "number": {
                   "type": "string",
                   "example": "123"
-                },
-                "recycle_types": {
-                  "type": "array",
-                  "example": [
-                    1,
-                    2,
-                    3
-                  ],
-                  "items": {
-                    "type": "number"
-                  }
                 }
               },
               "required": [
                 "name",
                 "description",
+                "recycle_types",
                 "postalcode",
                 "street",
                 "neighborhood",
@@ -262,8 +230,245 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para listar todos os pontos de coleta cadastrados pelo usuário autenticado",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/local/{local_id}": {
+      "get": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para obter detalhes de um ponto de coleta específico cadastrado pelo usuário autenticado",
+        "parameters": [
+          {
+            "name": "local_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": 1
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para excluir um ponto de coleta específico cadastrado pelo usuário autenticado",
+        "parameters": [
+          {
+            "name": "local_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do ponto de coleta"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "where": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para atualizar informações de um ponto de coleta específico cadastrado pelo usuário autenticado",
+        "parameters": [
+          {
+            "name": "local_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do ponto de coleta"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "atualizarPontoDeColeta",
+            "in": "body",
+            "description": "Dados atualizados do ponto de coleta",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Ponto Dakir Polidoro Atualizado"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Descrição atualizada do ponto de coleta"
+                },
+                "recycle_types": {
+                  "type": "string",
+                  "example": "Vidro, Papel, Plástico"
+                },
+                "postalcode": {
+                  "type": "string",
+                  "example": "88063-565"
+                },
+                "street": {
+                  "type": "string",
+                  "example": "Rua Radialista Dakir Polidoro"
+                },
+                "neighborhood": {
+                  "type": "string",
+                  "example": "Campeche"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Florianópolis"
+                },
+                "state": {
+                  "type": "string",
+                  "example": "SC"
+                },
+                "number": {
+                  "type": "string",
+                  "example": "123"
+                }
+              },
+              "required": [
+                "name",
+                "description",
+                "recycle_types",
+                "postalcode",
+                "street",
+                "neighborhood",
+                "city",
+                "state",
+                "number"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/local/{local_id}/maps": {
+      "get": {
+        "tags": [
+          "Pontos de Coleta"
+        ],
+        "description": "Endpoint para obter o link do Google Maps de um ponto de coleta específico cadastrado pelo usuário autenticado",
+        "parameters": [
+          {
+            "name": "local_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do ponto de coleta"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

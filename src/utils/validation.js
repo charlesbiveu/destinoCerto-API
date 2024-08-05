@@ -108,6 +108,14 @@ const validateDescription = (description) => {
   return null;
 };
 
+const validateRecycleTypes = (recycle_types) => {
+  if (!recycle_types || recycle_types.trim() === '') {
+    return { status: 400, message: 'Tipos de reciclagem são obrigatórios // Recycle types are required' };
+  }
+  // Adicionalmente, você pode adicionar validações específicas para o formato dos tipos de reciclagem, se necessário.
+  return null;
+};
+
 
 module.exports = {
   validateCPF,
@@ -117,5 +125,6 @@ module.exports = {
   validatePassword,
   validateBirthdate,
   validateAddress,
-  validateDescription
+  validateDescription,
+  validateRecycleTypes
 };
