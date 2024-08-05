@@ -178,9 +178,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
           "201": {
             "description": "Usuário criado com sucesso."
           },
@@ -204,7 +201,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Endpoint para excluir um usuário pelo ID. A exclusão só será permitida se não houver pontos de coleta relacionados ao usuário.",
+        "description": "Endpoint para excluir um usuário pelo ID. A exclusão só será permitida se não houver pontos de coleta relacionados ao usuário. Além disso, um usuário só pode excluir sua própria conta.",
         "parameters": [
           {
             "name": "id",
@@ -221,16 +218,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Usuário excluído com sucesso."
+            "description": "Usuário excluído com sucesso"
           },
           "400": {
-            "description": "Usuário possui pontos de coleta relacionados e não pode ser excluído."
+            "description": "Usuário possui pontos de coleta relacionados e não pode ser excluído"
+          },
+          "403": {
+            "description": "Você somente pode excluir sua própria conta"
           },
           "404": {
-            "description": "Usuário não encontrado."
+            "description": "Usuário não encontrado"
           },
           "500": {
-            "description": "Erro interno do servidor."
+            "description": "Erro interno do servidor"
           }
         }
       }
