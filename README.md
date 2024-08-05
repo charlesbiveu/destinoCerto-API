@@ -22,13 +22,11 @@ O roteiro da aplicação pode ser conferido no Trello
 
 ![drawSql](https://github.com/user-attachments/assets/02229ca9-37bd-40aa-9c75-66d5d95987f4)
 
-
 O Diagrama Entidade-Relacionamento pode ser visualizado do DrawSql.
 
 - Um User pode ter muitos CollectionPoints.
-- Um CollectionPoint pode ter muitos RecycleTypes associados através da tabela de relacionamento CollectionPointRecycleType.
 
-`User (1) --- (N) CollectionPoint (N) --- (N) CollectionPointRecycleType --- (N) RecycleType`
+`User (1) --- (N) CollectionPoint (N)`
 
 - [DrawSql](https://drawsql.app/teams/gp-13/diagrams/destino-certo)
 
@@ -239,8 +237,6 @@ O projeto **Destino Certo - API** adota uma arquitetura inspirada no modelo MVC,
 ### Estrutura do projeto
 
 ![estruturaDoProjeto](https://github.com/user-attachments/assets/18577b35-d609-4489-ab2f-ff8672a1546f)
-
-
 
 ## Documentação com Swagger
 
