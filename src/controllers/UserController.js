@@ -94,6 +94,15 @@ const createUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const userId = req.userId; // Obtém o ID do usuário autenticado
+    const userToDeleteId = req.params.id; // Obtém o ID do usuário a ser deletado
+
+    // Verificar se o usuário autenticado está tentando deletar sua própria conta
+    if (userId !== parseInt(userToDeleteId)) {
+      return res.status(403).json({
+        error:
+          'Você somente pode excluir sua própria conta // You can only delete your own account',
+      });
+    }
 
     // Verificar se o usuário possui pontos de coleta registrados
     const collectionPoints = await CollectionPoint.findOne({

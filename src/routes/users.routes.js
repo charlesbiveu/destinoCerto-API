@@ -48,28 +48,31 @@ usersRoutes.delete(
   '/:id',
   validateToken,
   UserController.deleteUser
-  /*
-    #swagger.tags = ['Usuários']
-    #swagger.description = 'Endpoint para excluir um usuário pelo ID. A exclusão só será permitida se não houver pontos de coleta relacionados ao usuário.'
-    #swagger.parameters['id'] = {
-        in: 'path',
-        description: 'ID do usuário',
-        required: true,
-        type: 'integer'
-    }
-    #swagger.responses[200] = {
-      description: 'Usuário excluído com sucesso.'
-    }
-    #swagger.responses[400] = {
-      description: 'Usuário possui pontos de coleta relacionados e não pode ser excluído.'
-    }
-    #swagger.responses[404] = {
-      description: 'Usuário não encontrado.'
-    }
-    #swagger.responses[500] = {
-      description: 'Erro interno do servidor.'
-    }
-  */
+  /* 
+        #swagger.tags = ['Usuários']
+        #swagger.description = 'Endpoint para excluir um usuário pelo ID. A exclusão só será permitida se não houver pontos de coleta relacionados ao usuário. Além disso, um usuário só pode excluir sua própria conta.'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'ID do usuário',
+            required: true,
+            type: 'integer'
+        }
+        #swagger.responses[200] = {
+          description: 'Usuário excluído com sucesso'
+        }
+        #swagger.responses[400] = {
+          description: 'Usuário possui pontos de coleta relacionados e não pode ser excluído'
+        }
+        #swagger.responses[403] = {
+          description: 'Você somente pode excluir sua própria conta'
+        }
+        #swagger.responses[404] = {
+          description: 'Usuário não encontrado'
+        }
+        #swagger.responses[500] = {
+          description: 'Erro interno do servidor'
+        }
+    */
 );
 
 module.exports = usersRoutes;
