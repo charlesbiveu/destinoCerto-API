@@ -26,7 +26,7 @@ O Diagrama Entidade-Relacionamento pode ser visualizado do DrawSql.
 
 - Um User pode ter muitos CollectionPoints.
 
-`User (1) --- (N) CollectionPoint (N)`
+`User (1) --- (N) CollectionPoint`
 
 - [DrawSql](https://drawsql.app/teams/gp-13/diagrams/destino-certo)
 
